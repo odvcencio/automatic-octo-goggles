@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	"github.com/gin-gonic/gin"
-	"github.com/odvcencio/jh_test/clients"
+	"github.com/odvcencio/jh_exercise/weather"
 )
 
 func main() {
@@ -56,7 +56,7 @@ func main() {
 			return
 		}
 
-		forecast, forecastErr := clients.GetShortForecast(lat, long)
+		forecast, forecastErr := weather.GetShortForecast(lat, long)
 		if forecastErr != nil {
 			log.Println(forecastErr.Err)
 			returnErrorByCode(c, *forecastErr)
@@ -70,7 +70,7 @@ func main() {
 	r.Run()
 }
 
-func returnErrorByCode(c *gin.Context, err clients.RequestError) {
+func returnErrorByCode(c *gin.Context, err weather.RequestError) {
 	switch err.StatusCode {
 	case http.StatusBadRequest:
 		c.JSON(http.StatusBadRequest, gin.H{

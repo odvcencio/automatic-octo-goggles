@@ -1,4 +1,4 @@
-module github.com/odvcencio/jh_test
+module github.com/odvcencio/jh_exercise
 
 go 1.22.1
 
